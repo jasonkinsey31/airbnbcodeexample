@@ -1,0 +1,11 @@
+If [2371].contains (“Investor”) and DateDiff(“d”, [2370], [2397]) <= DateTime.DaysInMonth([2397].AddDays(-1).Year, [2397].AddDays(-1).Month) then
+[2836] = ([#2593] * [#3]/100/ 360) * (DateTime.DaysInMonth([2397].AddDays(-1).Year, [2397].AddDays(-1).Month) - DateDiff(“d”, [2370], [2397]))
+Elseif [2371].contains (“Investor”) and DateDiff(“d”, [2370], [2397]) > DateTime.DaysInMonth([2397].AddDays(-1).Year, [2397].AddDays(-1).Month) and
+[2397] = [682] then
+[2836] = ([#2593] * [#3]/100/ 360) * -(DateTime.DaysInMonth([2370].Year, [2370].Month) - [2370].Day)
+Elseif [2371].contains (“Lender”) and DateDiff(“d”, [2370], [2397]) <= DateTime.DaysInMonth([2397].AddDays(-1).Year, [2397].AddDays(-1).Month) then
+[2836] = ([#2593] * [#3]/100/ 360) * DateDiff(“d”, [2397], [2370])
+Elseif [2371].contains (“Lender”) and DateDiff(“d”, [2370], [2397]) > DateTime.DaysInMonth([2397].AddDays(-1).Year, [2397].AddDays(-1).Month) and
+[2397] = [682] then
+[2836] = ([#2593] * [#3]/100/ 360) * -(30 + (DateTime.DaysInMonth([2370].Year, [2370].Month) - [2370].Day))
+End If
